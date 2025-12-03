@@ -1,0 +1,42 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 100px 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 35px;
+  align-items: center;
+  background-color: var(--nav-bg-green);
+  color: var(--text-tan);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: inherit;
+}
+
+.logoDiv {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.logoDiv img {
+  width: 48px;
+}
+
+.links {
+  display: flex;
+  gap: 35px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}

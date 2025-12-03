@@ -1,0 +1,25 @@
+.mainDiv {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 3.2rem;
+  color: var(--text-dark-green);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: inherit;
+}
