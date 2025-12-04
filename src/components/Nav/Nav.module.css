@@ -12,22 +12,25 @@ nav {
   color: var(--text-tan);
 }
 
-nav a {
-  text-decoration: none;
-}
-
-nav a:visited {
-  color: inherit;
-}
-
 .logoDiv {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
+.logoDiv > a:hover {
+  text-decoration: none;
+}
+
 .logoDiv img {
   width: 48px;
+}
+
+.logoDivName {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 2.6rem;
+  color: var(--text-tan);
 }
 
 .links {
@@ -35,8 +38,4 @@ nav a:visited {
   gap: 35px;
   font-size: 2rem;
   font-weight: 500;
-}
-
-.links a:hover {
-  text-decoration: underline;
 }

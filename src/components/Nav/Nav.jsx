@@ -9,7 +9,9 @@ export default function Nav() {
         <Link to="/">
           <img src={logo} alt="ShopHouse logo." />
         </Link>
-        {/* <p>ShopHouse</p> */}
+        <Link to="/" className={styles.logoDivName}>
+          ShopHouse
+        </Link>
       </div>
       <div className={styles.links}>
         <Link to="/">Home</Link>
