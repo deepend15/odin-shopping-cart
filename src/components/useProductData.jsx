@@ -39,19 +39,3 @@ const useProductData = () => {
 };
 
 export default useProductData;
-
-// export async function getProducts() {
-//   try {
-//     const response = await fetch("https://fakestoreapi.com/products");
-
-//     if (!response.ok) {
-//       throw new Error("Error fetching product data.");
-//     }
-
-//     const json = await response.json();
-//     console.log(json);
-//     return json;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
