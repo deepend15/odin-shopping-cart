@@ -10,6 +10,7 @@ nav {
   align-items: center;
   background-color: var(--nav-bg-green);
   color: var(--text-tan);
+  box-shadow: 0 10px 10px -10px rgb(150, 150, 150);
 }
 
 .logoDiv {
