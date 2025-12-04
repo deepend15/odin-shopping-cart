@@ -3,7 +3,7 @@ import { Link, useOutletContext } from "react-router";
 import ImageCarousel from "./ImageCarousel";
 
 export default function Home() {
-  const [, , error, loading] = useOutletContext();
+  const [, , , error, loading] = useOutletContext();
   return (
     <div className={styles.mainDiv}>
       <h2 className={styles.h2}>Shop 'til you drop!</h2>

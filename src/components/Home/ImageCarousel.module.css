@@ -1,0 +1,71 @@
+.carouselDiv {
+  position: relative;
+}
+
+.imagesDiv {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 420px;
+  overflow: hidden;
+  background-color: rgb(236, 237, 236);
+  border-radius: 15px;
+  box-shadow: 0 0 8px -4px rgb(194, 194, 194);
+}
+
+.indivImageDiv {
+  height: 350px;
+  width: 350px;
+  flex-shrink: 0;
+  margin: 25px 75px 45px 75px;
+  display: grid;
+  place-items: center;
+}
+
+.carouselDiv > button {
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: silver;
+  color: black;
+  opacity: 0.5;
+}
+
+.leftArrowBtn {
+  left: 0;
+  padding: 10px 3px 10px 0;
+}
+
+.rightArrowBtn {
+  right: 0;
+  padding: 10px 0 10px 3px;
+}
+
+.carouselDiv > button > img {
+  width: 26px;
+}
+
+.carouselDiv > button:hover {
+  opacity: 1;
+}
+
+.circlesDiv {
+  position: absolute;
+  display: flex;
+  gap: 7px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -10px);
+}
+
+.circleDiv {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: 1px solid rgb(157, 157, 157);
+}
+
+.selected {
+  background-color: rgb(157, 157, 157);
+}

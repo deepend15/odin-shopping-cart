@@ -7,12 +7,21 @@ import { Outlet } from "react-router";
 
 function App() {
   const [cartItemCount, setCartItemCount] = useState(0);
-  const { productData, carouselProducts, error, loading } = useProductData();
+  const { productData, carouselProducts, setCarouselProducts, error, loading } =
+    useProductData();
 
   return (
     <>
       <Nav cartItemCount={cartItemCount} />
-      <Outlet context={[productData, carouselProducts, error, loading]} />
+      <Outlet
+        context={[
+          productData,
+          carouselProducts,
+          setCarouselProducts,
+          error,
+          loading,
+        ]}
+      />
     </>
   );
 }

@@ -1,6 +1,6 @@
 .mainDiv {
   display: grid;
-  justify-content: center;
+  justify-items: center;
   gap: 30px;
   text-align: center;
 }
