@@ -1,0 +1,11 @@
+.mainDiv {
+  margin-top: 10px;  
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+  font-size: 1.8rem;
+}
+
+.mainDiv > a {
+  color: var(--text-dark-green);
+}
