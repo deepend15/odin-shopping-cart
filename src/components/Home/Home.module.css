@@ -1,11 +1,16 @@
 .mainDiv {
   display: grid;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   text-align: center;
 }
 
-.infoDiv {
-  color: var(--text-dark-green);
+.h2 {
+  font-size: 2rem;
+  font-weight: 500;
 }
 
+.mainDiv > a {
+  color: var(--text-dark-green);
+  font-size: 2rem;
+}

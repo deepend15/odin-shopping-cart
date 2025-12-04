@@ -6,7 +6,7 @@ export default function Home() {
   const [, , error, loading] = useOutletContext();
   return (
     <div className={styles.mainDiv}>
-      <div className={styles.infoDiv}>Info.</div>
+      <h2 className={styles.h2}>Shop 'til you drop!</h2>
       <ImageCarousel />
       {!loading && !error && (
         <Link to="shop">{"Start shopping now \uD83E\uDCA1"}</Link>
