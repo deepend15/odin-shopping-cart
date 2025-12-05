@@ -39,6 +39,7 @@ export default function ImageCarousel() {
       product.position = newPosition;
     });
     setCarouselProducts(carouselProductsCopy);
+    // this is part of an extremely hacky solution to have each image fade in when it comes to the front of the carousel (except on initial homepage load). things like this are sprinkled throughout this component and in ImageCarousel.module.css. Obviously not the correct solution, but it's the only way I could get it to work with my current level of knowledge.
     if (imageDivSecondClassName !== `${styles.fadeIn1}`) {
       setImageDivSecondClassName(`${styles.fadeIn1}`);
     } else {
