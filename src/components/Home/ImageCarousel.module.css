@@ -1,3 +1,23 @@
+.loading {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.loading > span {
+  animation: fade-in-one 500ms backwards infinite alternate;
+}
+
+.loading > span:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading > span:nth-child(2) {
+  animation-delay: 100ms;
+}
+.loading > span:nth-child(3) {
+  animation-delay: 200ms;
+}
+
 .carouselDiv {
   position: relative;
 }
@@ -20,6 +40,8 @@
   margin: 25px 75px 45px 75px;
   display: grid;
   place-items: center;
+  will-change: transform;
+  position: relative;
 }
 
 .fadeIn1 {
@@ -30,12 +52,38 @@
   animation: fade-in-two 2000ms backwards;
 }
 
-.slideIn1 {
-  animation: slide-in-one 1000ms backwards;
+.indivImageDiv:hover {
+  cursor: pointer;
 }
 
-.slideIn2 {
-  animation: slide-in-two 1000ms backwards;
+.productInfoDiv {
+  position: absolute;
+  width: 110%;
+  height: 105%;
+  background: rgb(0 0 0 / 0.1);
+  visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.productInfoDiv > p {
+  width: 100%;
+  background: rgb(255 255 255 / 0.9);
+  text-align: left;
+  padding: 10px 5px 10px 12px;
+  font-size: 1.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.popUp {
+  animation: pop-up 300ms ease-out;
 }
 
 .carouselDiv > button {
@@ -86,6 +134,15 @@
   background-color: rgb(157, 157, 157);
 }
 
+@keyframes fade-in-span {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @keyframes fade-in-one {
   from {
     opacity: 0;
@@ -104,20 +161,11 @@
   }
 }
 
-@keyframes slide-in-one {
+@keyframes pop-up {
   from {
-    transform: translateX(-100%);
+    transform: translateY(100%);
   }
   to {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes slide-in-two {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
 }
