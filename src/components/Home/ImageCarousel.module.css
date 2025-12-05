@@ -22,6 +22,22 @@
   place-items: center;
 }
 
+.fadeIn1 {
+  animation: fade-in-one 2000ms backwards;
+}
+
+.fadeIn2 {
+  animation: fade-in-two 2000ms backwards;
+}
+
+.slideIn1 {
+  animation: slide-in-one 1000ms backwards;
+}
+
+.slideIn2 {
+  animation: slide-in-two 1000ms backwards;
+}
+
 .carouselDiv > button {
   border: none;
   position: absolute;
@@ -68,4 +84,40 @@
 
 .selected {
   background-color: rgb(157, 157, 157);
+}
+
+@keyframes fade-in-one {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-two {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-one {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in-two {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }
