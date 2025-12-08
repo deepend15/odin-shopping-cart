@@ -8,7 +8,7 @@
   width: 500px;
   height: 420px;
   overflow: hidden;
-  background-color: rgb(236, 237, 236);
+  background-color: var(--product-image-div-bg);
   border-radius: 15px;
   box-shadow: 0 0 8px -4px rgb(194, 194, 194);
 }

@@ -14,7 +14,7 @@ const useProductData = () => {
       : id === 3
       ? (obj.altText = "Men's tan zip-up cotton jacket.")
       : id === 4
-      ? (obj.altText = "Mens casual slim fit long sleeve t-shirt.")
+      ? (obj.altText = "Men's casual slim fit long sleeve t-shirt.")
       : id === 5
       ? (obj.altText =
           "John Hardy women's gold & silver dragon chain bracelet.")
