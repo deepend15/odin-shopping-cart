@@ -20,11 +20,9 @@ export default function ImageCarousel() {
   const handleRightArrowClick = useCallback(() => {
     const carouselProductsCopy = carouselProducts.slice();
     carouselProductsCopy.forEach((product) => {
-      let newPosition;
       if (product.position > 1) {
-        newPosition = product.position - 1;
-      } else newPosition = 5;
-      product.position = newPosition;
+        product.position = product.position - 1;
+      } else product.position = 5;
     });
     setCarouselProducts(carouselProductsCopy);
     // this is part of an extremely hacky solution to have each image fade in when it comes to the front of the carousel (except on initial homepage load). code related to this is sprinkled throughout this component and in ImageCarousel.module.css. Obviously not the correct solution, but it's the only way I could get it to work with my current level of knowledge.
@@ -36,11 +34,9 @@ export default function ImageCarousel() {
   function handleLeftArrowClick() {
     const carouselProductsCopy = carouselProducts.slice();
     carouselProductsCopy.forEach((product) => {
-      let newPosition;
       if (product.position < 5) {
-        newPosition = product.position + 1;
-      } else newPosition = 1;
-      product.position = newPosition;
+        product.position = product.position + 1;
+      } else product.position = 1;
     });
     setCarouselProducts(carouselProductsCopy);
     imageDivSecondClassName === `${styles.fadeIn1}`
@@ -81,18 +77,6 @@ export default function ImageCarousel() {
       : setImageDivSecondClassName(`${styles.fadeIn1}`);
   }
 
-  function onImageDivMouseEnter() {
-    setProductInfoDivSecondClassName(`${styles.visible}`);
-    setProductInfoClassName(`${styles.popUp}`);
-    stopAutoSlide();
-  }
-
-  function onImageDivMouseLeave() {
-    setProductInfoDivSecondClassName(null);
-    setProductInfoClassName(null);
-    startAutoSlide();
-  }
-
   const startAutoSlide = useCallback(() => {
     if (intervalRef.current !== null) return;
     intervalRef.current = setInterval(handleRightArrowClick, 5000);
@@ -104,6 +88,18 @@ export default function ImageCarousel() {
       intervalRef.current = null;
     }
   }, []);
+
+  function onImageDivMouseEnter() {
+    setProductInfoDivSecondClassName(`${styles.visible}`);
+    setProductInfoClassName(`${styles.popUp}`);
+    stopAutoSlide();
+  }
+
+  function onImageDivMouseLeave() {
+    setProductInfoDivSecondClassName(null);
+    setProductInfoClassName(null);
+    startAutoSlide();
+  }
 
   useEffect(() => {
     if (loading || error) return;
@@ -172,10 +168,8 @@ export default function ImageCarousel() {
       <div className={styles.circlesDiv}>
         {carouselProducts.map((product) => {
           let className = `${styles.circleDiv}`;
-          let additionalClassName;
           if (product.position === 1) {
-            additionalClassName = `${styles.selected}`;
-            className = className.concat(" ", additionalClassName);
+            className = className.concat(" ", `${styles.selected}`);
           }
           return (
             <button
