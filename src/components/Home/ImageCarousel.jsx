@@ -1,4 +1,5 @@
 import styles from "./ImageCarousel.module.css";
+import Loading from "../Loading/Loading";
 import { useOutletContext } from "react-router";
 import { useEffect, useState, useRef, useCallback } from "react";
 import backArrow from "../../images/back-arrow.svg";
@@ -111,15 +112,7 @@ export default function ImageCarousel() {
     return stopAutoSlide;
   }, [loading, error, startAutoSlide, stopAutoSlide]);
 
-  if (loading)
-    return (
-      <p className={styles.loading}>
-        Loading
-        <span>.</span>
-        <span>.</span>
-        <span>.</span>
-      </p>
-    );
+  if (loading) return <Loading />;
   if (error) return <p>An unexpected error occurred.</p>;
   return (
     <div className={styles.carouselDiv}>
