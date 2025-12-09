@@ -1,13 +1,26 @@
 import styles from "./ProductCard.module.css";
 import showPriceString from "../showPriceString";
+import Popup from "./Popup";
 import { useOutletContext } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export default function ProductCard({ productObject }) {
-  const [, , , , ,] = useOutletContext();
+export default function ProductCard({ productObject, handleShowPopup }) {
+  const [
+    ,
+    ,
+    ,
+    ,
+    ,
+    cart,
+    setCart,
+    ,
+    setNumberOfCartItems,
+    getNumberOfCartItems,
+  ] = useOutletContext();
   const [productNumberValue, setProductNumberValue] = useState(0);
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
+  const inputRef = useRef();
 
   useEffect(() => {
     const productImage = new Image();
@@ -18,7 +31,12 @@ export default function ProductCard({ productObject }) {
   }, [productObject.image]);
 
   function handleChange(e) {
-    setProductNumberValue(e.target.value);
+    const inputtedNumber = Number(e.target.value);
+    if (inputtedNumber <= 10) setProductNumberValue(inputtedNumber);
+  }
+
+  function handleFocus() {
+    inputRef.current.select();
   }
 
   function handleIncrementItem() {
@@ -36,22 +54,62 @@ export default function ProductCard({ productObject }) {
     }
   }
 
+  function idInCart() {
+    const cartItemObjectsArray = Object.values(cart);
+    if (cartItemObjectsArray.length !== 0) {
+      const matchingObjectArray = cartItemObjectsArray.filter(
+        (item) => item.id === productObject.id
+      );
+      if (matchingObjectArray.length !== 0) return true;
+    }
+    return false;
+  }
+
+  function handleAddToCart() {
+    if (productNumberValue === 0) return;
+
+    const propertyName = "product" + productObject.id;
+    let newCart;
+
+    if (idInCart()) {
+      newCart = {
+        ...cart,
+        [propertyName]: {
+          ...cart[propertyName],
+          number: cart[propertyName].number + productNumberValue,
+        },
+      };
+    } else {
+      newCart = {
+        ...cart,
+        [propertyName]: {
+          id: productObject.id,
+          number: productNumberValue,
+        },
+      };
+    }
+
+    setCart(newCart);
+    const newCartItemNumber = getNumberOfCartItems(newCart);
+    setNumberOfCartItems(newCartItemNumber);
+    setProductNumberValue(0);
+    handleShowPopup(productObject.altText, productNumberValue);
+  }
+
   return (
     <div className={styles.cardDiv}>
       <div className={styles.imageDiv}>
         {(height || width) && (
           <img
             src={productObject.image}
-            alt={productObject.altText}
+            alt={`${productObject.altText}.`}
             height={height}
             width={width}
           />
         )}
       </div>
       <div className={styles.middleDiv}>
-        <p className={styles.title}>
-          {productObject.altText.slice(0, productObject.altText.length - 1)}
-        </p>
+        <p className={styles.title}>{productObject.altText}</p>
         <p className={styles.price}>{showPriceString(productObject.price)}</p>
         <div className={styles.itemSelectionDiv}>
           <button onClick={handleDecrementItem}>-</button>
@@ -59,15 +117,15 @@ export default function ProductCard({ productObject }) {
             type="number"
             id={"product" + productObject.id + "number"}
             name={"product" + productObject.id + "number"}
-            min={0}
-            max={10}
+            ref={inputRef}
+            onFocus={handleFocus}
             value={productNumberValue}
             onChange={handleChange}
           />
           <button onClick={handleIncrementItem}>+</button>
         </div>
       </div>
-      <button>Add to cart</button>
+      <button onClick={handleAddToCart}>Add to cart</button>
     </div>
   );
 }

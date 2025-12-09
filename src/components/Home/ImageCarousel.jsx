@@ -7,7 +7,7 @@ import forwardArrow from "../../images/forward-arrow.svg";
 // arrived at much of the useEffect & useCallback code through trial and error, ChatGPT assistance (which was slightly helpful but also exacerbated some problems), and following linter error guidance. still don't fully understand it all.
 
 export default function ImageCarousel() {
-  const [, carouselProducts, setCarouselProducts, ...rest] = useOutletContext();
+  const [, carouselProducts, setCarouselProducts] = useOutletContext();
   const positions = [1, 2, 3, 4, 5];
   const [imageDivSecondClassName, setImageDivSecondClassName] = useState(null);
   const [productInfoDivSecondClassName, setProductInfoDivSecondClassName] =
@@ -140,16 +140,13 @@ export default function ImageCarousel() {
             >
               <img
                 src={currentProduct.image}
-                alt={currentProduct.altText}
+                alt={`${currentProduct.altText}.`}
                 height={height}
                 width={width}
               />
               <div className={productInfoDivClassName}>
                 <p className={productInfoClassName}>
-                  {currentProduct.altText.slice(
-                    0,
-                    currentProduct.altText.length - 1
-                  )}
+                  {currentProduct.altText}.
                 </p>
               </div>
             </div>

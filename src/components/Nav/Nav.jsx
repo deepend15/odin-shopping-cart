@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import logo from "../../images/shophouse-logo-240px.png";
 import cartIcon from "../../images/cart.svg";
 
-export default function Nav({ cartItemCount }) {
+export default function Nav({ numberOfCartItems }) {
   return (
     <nav>
       <div className={styles.logoDiv}>
@@ -19,7 +19,7 @@ export default function Nav({ cartItemCount }) {
         <Link to="shop">Shop!</Link>
         <Link to="cart" className={styles.cartLink}>
           <img src={cartIcon} alt="Shopping cart icon." />
-          <span>Cart ({cartItemCount})</span>
+          <span>Cart ({numberOfCartItems})</span>
         </Link>
       </div>
     </nav>

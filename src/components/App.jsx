@@ -7,13 +7,19 @@ import { Outlet } from "react-router";
 import { SharedContext } from "./SharedContext";
 
 function App() {
-  const { cartItemCount, setCartItemCount } = useContext(SharedContext);
   const { productData, carouselProducts, setCarouselProducts, error, loading } =
     useProductData();
+  const {
+    cart,
+    setCart,
+    numberOfCartItems,
+    setNumberOfCartItems,
+    getNumberOfCartItems,
+  } = useContext(SharedContext);
 
   return (
     <>
-      <Nav cartItemCount={cartItemCount} />
+      <Nav numberOfCartItems={numberOfCartItems} />
       <Outlet
         context={[
           productData,
@@ -21,8 +27,11 @@ function App() {
           setCarouselProducts,
           error,
           loading,
-          cartItemCount,
-          setCartItemCount,
+          cart,
+          setCart,
+          numberOfCartItems,
+          setNumberOfCartItems,
+          getNumberOfCartItems,
         ]}
       />
     </>

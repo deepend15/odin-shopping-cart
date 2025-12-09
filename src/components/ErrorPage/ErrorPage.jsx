@@ -5,11 +5,11 @@ import { useContext } from "react";
 import { SharedContext } from "../SharedContext";
 
 export default function ErrorPage() {
-  const { cartItemCount } = useContext(SharedContext);
+  const { numberOfCartItems } = useContext(SharedContext);
 
   return (
     <>
-      <Nav cartItemCount={cartItemCount} />
+      <Nav numberOfCartItems={numberOfCartItems} />
       <div className={styles.mainDiv}>
         <p>{"\uD83E\uDDD0\u00A0 Uh-oh, looks like this page doesn't exist!"}</p>
         <Link to="/">{"\u2BA9 Return home"}</Link>

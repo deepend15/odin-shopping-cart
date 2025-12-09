@@ -32,10 +32,6 @@
   animation: fade-in-two 2000ms backwards;
 }
 
-.indivImageDiv:hover {
-  cursor: pointer;
-}
-
 .productInfoDiv {
   position: absolute;
   width: 110%;

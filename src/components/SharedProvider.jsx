@@ -6,11 +6,53 @@
 import { useState } from "react";
 import { SharedContext } from "./SharedContext";
 
+// const example = {
+//   1: {
+//     id: 1,
+//     number: 3,
+//   },
+//   2: {
+//     id: 2,
+//     number: 1,
+//   },
+//   3: {
+//     id: 3,
+//     number: 2,
+//   },
+// };
+
+// const values = [
+//   { id: 1, number: 3 },
+//   { id: 2, number: 1 },
+//   { id: 3, number: 2 },
+// ];
+
+// values.reduce((total, currentItem) => {
+//   return total + currentItem.number;
+// }, 0);
+
 export function SharedProvider({ children }) {
-  const [cartItemCount, setCartItemCount] = useState(0);
+  const [cart, setCart] = useState({});
+  const [numberOfCartItems, setNumberOfCartItems] = useState(0);
+
+  function getNumberOfCartItems(cart) {
+    const cartItemObjectsArray = Object.values(cart);
+    if (cartItemObjectsArray.length === 0) return 0;
+    return cartItemObjectsArray.reduce((total, currentItem) => {
+      return total + currentItem.number;
+    }, 0);
+  }
 
   return (
-    <SharedContext.Provider value={{ cartItemCount, setCartItemCount }}>
+    <SharedContext.Provider
+      value={{
+        cart,
+        setCart,
+        numberOfCartItems,
+        setNumberOfCartItems,
+        getNumberOfCartItems,
+      }}
+    >
       {children}
     </SharedContext.Provider>
   );

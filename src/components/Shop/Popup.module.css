@@ -1,0 +1,33 @@
+.popup {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(227, 244, 227);
+  padding: 15px 20px;
+  opacity: 0;
+  transform: translate(-15px, -50%);
+  transition: opacity 2000ms;
+  animation: slide-in 150ms ease-out;
+  border: 2px solid var(--text-dark-green);
+  border-radius: 12px;
+  font-size: 1.8rem;
+}
+
+.popup.visible {
+  opacity: 1;
+}
+
+.popup.hidden {
+  opacity: 0;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translate(-15px, 200%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-15px, -50%);
+    opacity: 1;
+  }
+}
