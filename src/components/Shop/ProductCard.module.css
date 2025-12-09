@@ -91,6 +91,10 @@
   }
 }
 
+.itemSelectionDiv > button:active {
+  background-color: rgb(187, 187, 187);
+}
+
 .cardDiv > button:active {
   transform: scale(0.9);
 }

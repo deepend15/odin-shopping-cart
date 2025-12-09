@@ -21,6 +21,21 @@ export default function ProductCard({ productObject }) {
     setProductNumberValue(e.target.value);
   }
 
+  function handleIncrementItem() {
+    if (productNumberValue < 10)
+      setProductNumberValue(
+        (previousProductNumberValue) => previousProductNumberValue + 1
+      );
+  }
+
+  function handleDecrementItem() {
+    if (productNumberValue > 0) {
+      setProductNumberValue(
+        (previousProductNumberValue) => previousProductNumberValue - 1
+      );
+    }
+  }
+
   return (
     <div className={styles.cardDiv}>
       <div className={styles.imageDiv}>
@@ -39,7 +54,7 @@ export default function ProductCard({ productObject }) {
         </p>
         <p className={styles.price}>{showPriceString(productObject.price)}</p>
         <div className={styles.itemSelectionDiv}>
-          <button>-</button>
+          <button onClick={handleDecrementItem}>-</button>
           <input
             type="number"
             id={"product" + productObject.id + "number"}
@@ -49,7 +64,7 @@ export default function ProductCard({ productObject }) {
             value={productNumberValue}
             onChange={handleChange}
           />
-          <button>+</button>
+          <button onClick={handleIncrementItem}>+</button>
         </div>
       </div>
       <button>Add to cart</button>
