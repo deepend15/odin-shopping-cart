@@ -33,20 +33,24 @@ export default function ProductCard({ productObject }) {
           />
         )}
       </div>
-      <p>{productObject.altText.slice(0, productObject.altText.length - 1)}</p>
-      <p>{showPriceString(productObject.price)}</p>
-      <div className={styles.itemSelectionDiv}>
-        <button>-</button>
-        <input
-          type="number"
-          id={"product" + productObject.id + "number"}
-          name={"product" + productObject.id + "number"}
-          min={0}
-          max={10}
-          value={productNumberValue}
-          onChange={handleChange}
-        />
-        <button>+</button>
+      <div className={styles.middleDiv}>
+        <p className={styles.title}>
+          {productObject.altText.slice(0, productObject.altText.length - 1)}
+        </p>
+        <p className={styles.price}>{showPriceString(productObject.price)}</p>
+        <div className={styles.itemSelectionDiv}>
+          <button>-</button>
+          <input
+            type="number"
+            id={"product" + productObject.id + "number"}
+            name={"product" + productObject.id + "number"}
+            min={0}
+            max={10}
+            value={productNumberValue}
+            onChange={handleChange}
+          />
+          <button>+</button>
+        </div>
       </div>
       <button>Add to cart</button>
     </div>
