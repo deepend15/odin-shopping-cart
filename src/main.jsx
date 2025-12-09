@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { routes } from "./components/routes.jsx";
+import { SharedProvider } from "./components/SharedProvider.jsx";
 
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <SharedProvider>
+      <RouterProvider router={router} />
+    </SharedProvider>
   </StrictMode>
 );

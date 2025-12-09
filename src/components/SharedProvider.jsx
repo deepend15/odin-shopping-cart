@@ -1,0 +1,17 @@
+// had to look this up in order to share props between 'errorElement' and other components (so that the cartItemCount shows in the nav on the error page). affected components (other than this one):
+// -new component SharedContext.jsx (imported here)
+// -main.jsx: had to wrap <RouterProvider> in <SharedProvider>
+// -in order to use cartItemCount and setCartItemCount in other places, import useContext from react and { SharedContext } from SharedContext.jsx, then destructure using useContext (i.e. 'const { cartItemCount, setCartItemCount } = useContext(SharedContext)')
+
+import { useState } from "react";
+import { SharedContext } from "./SharedContext";
+
+export function SharedProvider({ children }) {
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  return (
+    <SharedContext.Provider value={{ cartItemCount, setCartItemCount }}>
+      {children}
+    </SharedContext.Provider>
+  );
+}
