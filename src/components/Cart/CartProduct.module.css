@@ -1,0 +1,98 @@
+.itemDiv {
+  display: flex;
+  gap: 15px;
+}
+
+.itemDivTop {
+  display: flex;
+  gap: 15px;
+}
+
+.imageDiv {
+  width: 125px;
+  height: 125px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.itemDivRight {
+  flex-grow: 1;
+  display: grid;
+  gap: 25px;
+  grid-template-rows: repeat(2, min-content);
+}
+
+.itemInfoDiv {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemTitle {
+  line-height: 1.5;
+}
+
+.itemPrice {
+  margin-top: 8px;
+  color: var(--text-dark-green);
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+.itemInfoRight {
+  margin-left: 5px;
+  background-color: var(--product-image-div-bg);
+  border-radius: 15px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.itemInfoRight > button {
+  background-color: transparent;
+  font-size: 2rem;
+  border: none;
+  width: 25px;
+  padding: 8px 0;
+  color: black;
+}
+
+.decrease {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.increase {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.itemInfoRight > span {
+  font-size: 1.7rem;
+}
+
+.removeItemButton {
+  composes: defaultButton from "../DefaultButton.module.css";
+  justify-self: start;
+}
+
+@media (hover: hover) {
+  .itemInfoRight > button:hover {
+    background-color: rgb(207, 207, 207);
+  }
+
+  .removeItemButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 2px silver;
+  }
+}
+
+.itemInfoRight > button:active {
+  background-color: rgb(172, 172, 172);
+}
+
+.removeItemButton:active {
+  transform: scale(0.9);
+}

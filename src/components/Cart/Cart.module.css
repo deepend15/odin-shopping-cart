@@ -1,0 +1,22 @@
+.mainDiv {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  align-items: center;
+}
+
+.cartDiv {
+  display: grid;
+  gap: 28px;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  max-width: 650px;
+  box-shadow: 0 0 8px lightgray;
+}
+
+.rightSide {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}

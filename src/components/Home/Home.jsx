@@ -1,5 +1,6 @@
 import styles from "./Home.module.css";
 import Loading from "../Loading/Loading";
+import FetchError from "../FetchError/FetchError";
 import { Link, useOutletContext } from "react-router";
 import ImageCarousel from "./ImageCarousel";
 
@@ -11,7 +12,7 @@ export default function Home() {
       {loading ? (
         <Loading />
       ) : error ? (
-        <p>An unexpected error occurred.</p>
+        <FetchError />
       ) : (
         <>
           <ImageCarousel />

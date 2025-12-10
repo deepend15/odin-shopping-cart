@@ -1,9 +1,10 @@
 import styles from "./Shop.module.css";
 import Loading from "../Loading/Loading";
+import FetchError from "../FetchError/FetchError";
 import ProductCard from "./ProductCard";
 import Popup from "./Popup";
 import { useOutletContext } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Shop() {
   const [productData, , , error, loading] = useOutletContext();
@@ -20,12 +21,16 @@ export default function Shop() {
     setItemInfo([]);
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.mainDiv}>
       {loading ? (
         <Loading />
       ) : error ? (
-        <p>An unexpected error occurred.</p>
+        <FetchError />
       ) : (
         <>
           {productData.map((productObject) => (

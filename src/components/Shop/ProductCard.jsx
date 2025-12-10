@@ -1,5 +1,4 @@
 import styles from "./ProductCard.module.css";
-import showPriceString from "../showPriceString";
 import Popup from "./Popup";
 import { useOutletContext } from "react-router";
 import { useState, useEffect, useRef } from "react";
@@ -110,7 +109,7 @@ export default function ProductCard({ productObject, handleShowPopup }) {
       </div>
       <div className={styles.middleDiv}>
         <p className={styles.title}>{productObject.altText}</p>
-        <p className={styles.price}>{showPriceString(productObject.price)}</p>
+        <p className={styles.price}>${productObject.price.toFixed(2)}</p>
         <div className={styles.itemSelectionDiv}>
           <button onClick={handleDecrementItem}>-</button>
           <input
@@ -125,7 +124,9 @@ export default function ProductCard({ productObject, handleShowPopup }) {
           <button onClick={handleIncrementItem}>+</button>
         </div>
       </div>
-      <button onClick={handleAddToCart}>Add to cart</button>
+      <button onClick={handleAddToCart} className={styles.addToCartButton}>
+        Add to cart
+      </button>
     </div>
   );
 }

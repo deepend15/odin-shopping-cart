@@ -1,0 +1,10 @@
+.defaultButton {
+  padding: 8px 15px;
+  font-size: 1.5rem;
+  background-color: var(--add-to-cart-bg-green);
+  color: black;
+  border: none;
+  border-radius: 12px;
+  transition: transform 250ms;
+  will-change: transform;
+}

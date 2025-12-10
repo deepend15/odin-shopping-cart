@@ -62,7 +62,6 @@ const useProductData = () => {
         response.forEach((productObject) => {
           setAltText(productObject.id, productObject);
         });
-        console.log(response);
         setProductData(response);
         const carouselProductIds = [3, 17, 6, 10, 14];
         const carouselProductArray = [];
@@ -77,7 +76,6 @@ const useProductData = () => {
           };
           carouselProductArray.push(carouselProduct);
         });
-        console.log(carouselProductArray);
         setCarouselProducts(carouselProductArray);
       })
       .catch((error) => {
