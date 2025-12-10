@@ -1,25 +1,71 @@
 import styles from "./Popup.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
-export default function Popup({ duration, onClose, item }) {
+export default function Popup({ duration, onClose, itemInfo, showPopup }) {
   const [isVisible, setIsVisible] = useState(true);
+  const fadeoutRef = useRef(null);
+  const unmountRef = useRef(null);
 
-  useEffect(() => {
-    const fadeOutTimer = setTimeout(() => {
+  const startFadeoutTimer = useCallback(() => {
+    if (fadeoutRef.current !== null) return;
+    fadeoutRef.current = setTimeout(() => {
       setIsVisible(false);
     }, duration);
+  }, [duration]);
 
-    const unmountTimer = setTimeout(() => {
+  const clearFadeoutTimer = useCallback(() => {
+    if (fadeoutRef.current !== null) {
+      clearTimeout(fadeoutRef.current);
+      fadeoutRef.current = null;
+    }
+  }, []);
+
+  const startUnmountTimer = useCallback(() => {
+    if (unmountRef.current !== null) return;
+    unmountRef.current = setTimeout(() => {
       if (onClose) {
-        onClose();
+        onClose()
       }
     }, duration + 1500);
+  }, [duration, onClose]);
+
+  const clearUnmountTimer = useCallback(() => {
+    if (unmountRef.current !== null) {
+      clearTimeout(unmountRef.current);
+      unmountRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showPopup) {
+      clearFadeoutTimer();
+      clearUnmountTimer();
+      setIsVisible(true);
+      startFadeoutTimer();
+      startUnmountTimer();
+    } else {
+      startFadeoutTimer();
+      startUnmountTimer();
+    }
+
+
+    // const fadeOutTimer = setTimeout(() => {
+    //   setIsVisible(false);
+    // }, duration);
+
+    // const unmountTimer = setTimeout(() => {
+    //   if (onClose) {
+    //     onClose();
+    //   }
+    // }, duration + 1500);
 
     return () => {
-      clearTimeout(fadeOutTimer);
-      clearTimeout(unmountTimer);
+      clearFadeoutTimer();
+      clearUnmountTimer();
+      // clearTimeout(fadeOutTimer);
+      // clearTimeout(unmountTimer);
     };
-  }, [duration, onClose]);
+  }, [startFadeoutTimer, clearFadeoutTimer, startUnmountTimer, clearUnmountTimer, showPopup]);
 
   let className = `${styles.popup}`;
   isVisible
@@ -28,7 +74,7 @@ export default function Popup({ duration, onClose, item }) {
 
   return (
     <div className={className}>
-      Added to cart: ({item[1]}) {item[0]}
+      Added to cart: ({itemInfo[1]}) {itemInfo[0]}
     </div>
   );
 }
