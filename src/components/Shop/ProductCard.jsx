@@ -30,13 +30,13 @@ export default function ProductCard({ productObject, handleShowPopup }) {
     };
   }, [productObject.image]);
 
-  function handleChange(e) {
-    const inputtedNumber = Number(e.target.value);
-    if (inputtedNumber <= 10) setProductNumberValue(inputtedNumber);
+  function handleProductNumberFocus() {
+    inputRef.current.select();
   }
 
-  function handleFocus() {
-    inputRef.current.select();
+  function handleProductNumberChange(e) {
+    const inputtedNumber = Number(e.target.value);
+    if (inputtedNumber <= 10) setProductNumberValue(inputtedNumber);
   }
 
   function handleIncrementItem() {
@@ -118,9 +118,9 @@ export default function ProductCard({ productObject, handleShowPopup }) {
             id={"product" + productObject.id + "number"}
             name={"product" + productObject.id + "number"}
             ref={inputRef}
-            onFocus={handleFocus}
+            onFocus={handleProductNumberFocus}
             value={productNumberValue}
-            onChange={handleChange}
+            onChange={handleProductNumberChange}
           />
           <button onClick={handleIncrementItem}>+</button>
         </div>

@@ -8,16 +8,16 @@ import { useState } from "react";
 export default function Shop() {
   const [productData, , , error, loading] = useOutletContext();
   const [showPopup, setShowPopup] = useState(false);
-  const [item, setItem] = useState([]);
+  const [itemInfo, setItemInfo] = useState([]);
 
   function handleShowPopup(item, number) {
-    setItem([item, number]);
+    setItemInfo([item, number]);
     setShowPopup(true);
   }
 
   function handleClosePopup() {
     setShowPopup(false);
-    setItem([]);
+    setItemInfo([]);
   }
 
   return (
@@ -36,7 +36,12 @@ export default function Shop() {
             />
           ))}
           {showPopup && (
-            <Popup duration={1500} onClose={handleClosePopup} item={item} />
+            <Popup
+              duration={1500}
+              onClose={handleClosePopup}
+              itemInfo={itemInfo}
+              showPopup={showPopup}
+            />
           )}
         </>
       )}
