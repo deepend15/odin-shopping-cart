@@ -1,6 +1,6 @@
 import "./App.css";
 import "./app-colors.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useProductData from "./useProductData";
 import Nav from "./Nav/Nav";
 import { Outlet } from "react-router";
@@ -9,13 +9,16 @@ import { SharedContext } from "./SharedContext";
 function App() {
   const { productData, carouselProducts, setCarouselProducts, error, loading } =
     useProductData();
-  const {
-    cart,
-    setCart,
-    numberOfCartItems,
-    setNumberOfCartItems,
-    getNumberOfCartItems,
-  } = useContext(SharedContext);
+  const [cart, setCart] = useState({});
+  const { numberOfCartItems, setNumberOfCartItems } = useContext(SharedContext);
+
+  function getNumberOfCartItems(cart) {
+    const cartItemObjectsArray = Object.values(cart);
+    if (cartItemObjectsArray.length === 0) return 0;
+    return cartItemObjectsArray.reduce((total, currentItem) => {
+      return total + currentItem.number;
+    }, 0);
+  }
 
   return (
     <>
