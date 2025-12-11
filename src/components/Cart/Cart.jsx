@@ -65,7 +65,7 @@ export default function Cart() {
               );
             })}
           </div>
-          <div className={styles.rightSide}>
+          <div className={styles.bottomDiv}>
             <p className={styles.subtotalLine}>
               Subtotal: <span>${subtotal}</span>
             </p>
