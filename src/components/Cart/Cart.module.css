@@ -52,7 +52,7 @@
   padding: 12px 20px;
   border-radius: 25px;
   background-color: rgba(166, 225, 163, 0.3);
-  border: 1.6px outset rgb(0, 128, 0, 0.3);
+  border: 1.6px outset rgba(0, 128, 0, 0.2);
   color: rgba(16, 16, 16, 0.3);
 }
 
