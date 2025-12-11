@@ -1,8 +1,20 @@
+.emptyCartDiv {
+  margin-top: 15px;
+  display: grid;
+  gap: 25px;
+  justify-items: center;
+  font-size: 2rem;
+}
+
+.emptyCartDiv > a {
+  color: var(--text-dark-green);
+}
+
 .mainDiv {
   display: flex;
   justify-content: center;
   gap: 35px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .cartDiv {
@@ -17,6 +29,33 @@
 
 .rightSide {
   display: grid;
-  gap: 10px;
-  justify-items: center;
+  gap: 18px;
+  justify-items: start;
+  font-size: 1.9rem;
+}
+
+.rightSide > p {
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.rightSide > p > span {
+  font-weight: 500;
+}
+
+.rightSide > a {
+  color: var(--text-dark-green);
+}
+
+.rightSide > button {
+  justify-self: center;
+  padding: 12px 20px;
+  border-radius: 25px;
+}
+
+@media (hover: hover) {
+  .rightSide > button:hover {
+    cursor: auto;
+  }
 }

@@ -44,21 +44,31 @@ export default function Cart() {
       ) : error ? (
         <FetchError />
       ) : subtotal === 0 ? (
-        <>
+        <div className={styles.emptyCartDiv}>
           <p>Your cart is empty.</p>
           <Link to="/shop">{"Shop for items now! \uD83E\uDCA1"}</Link>
-        </>
+        </div>
       ) : (
         <>
           <div className={styles.cartDiv}>
             {cartObjects.map((cartObject) => {
+              const targetedProductArray = productData.filter(
+                (productObject) => productObject.id === cartObject.id
+              );
+              const productDataObject = targetedProductArray[0];
               return (
-                <CartProduct key={cartObject.id} cartObject={cartObject} />
+                <CartProduct
+                  key={cartObject.id}
+                  cartObject={cartObject}
+                  productDataObject={productDataObject}
+                />
               );
             })}
           </div>
           <div className={styles.rightSide}>
-            <p className={styles.subtotalLine}>Subtotal: ${subtotal}</p>
+            <p className={styles.subtotalLine}>
+              Subtotal: <span>${subtotal}</span>
+            </p>
             <Link to="/shop">{"Add more items \uD83E\uDCA1"}</Link>
             <button disabled>Checkout</button>
           </div>
