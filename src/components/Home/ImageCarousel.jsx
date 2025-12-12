@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import backArrow from "../../images/back-arrow.svg";
 import forwardArrow from "../../images/forward-arrow.svg";
 
-// arrived at much of the useEffect & useCallback code through trial and error, ChatGPT assistance (which was slightly helpful but also exacerbated some problems), and following linter error guidance. still don't fully understand it all.
+// arrived at much of the useEffect & useCallback code through trial and error, ChatGPT assistance (which was slightly helpful but also exacerbated some problems), and following linter error guidance.
 
 export default function ImageCarousel() {
   const [, carouselProducts, setCarouselProducts] = useOutletContext();

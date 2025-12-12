@@ -9,10 +9,12 @@
   font-size: 1.8rem;
   display: grid;
   justify-items: center;
-  gap: 30px;
+  gap: 25px;
   border: 2px solid black;
   border-radius: 8px;
   animation: come-in 200ms ease-out;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .deleteConfirmationDialog::backdrop {

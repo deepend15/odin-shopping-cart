@@ -24,7 +24,7 @@ export default function Popup({ duration, onClose, itemInfo, showPopup }) {
     if (unmountRef.current !== null) return;
     unmountRef.current = setTimeout(() => {
       if (onClose) {
-        onClose()
+        onClose();
       }
     }, duration + 1500);
   }, [duration, onClose]);
@@ -48,24 +48,17 @@ export default function Popup({ duration, onClose, itemInfo, showPopup }) {
       startUnmountTimer();
     }
 
-
-    // const fadeOutTimer = setTimeout(() => {
-    //   setIsVisible(false);
-    // }, duration);
-
-    // const unmountTimer = setTimeout(() => {
-    //   if (onClose) {
-    //     onClose();
-    //   }
-    // }, duration + 1500);
-
     return () => {
       clearFadeoutTimer();
       clearUnmountTimer();
-      // clearTimeout(fadeOutTimer);
-      // clearTimeout(unmountTimer);
     };
-  }, [startFadeoutTimer, clearFadeoutTimer, startUnmountTimer, clearUnmountTimer, showPopup]);
+  }, [
+    startFadeoutTimer,
+    clearFadeoutTimer,
+    startUnmountTimer,
+    clearUnmountTimer,
+    showPopup,
+  ]);
 
   let className = `${styles.popup}`;
   isVisible
