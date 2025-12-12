@@ -52,10 +52,8 @@
 @keyframes come-in {
   from {
     transform: translate(-50%, -50%) scale(0);
-    /* transform: translate(-50%, -50%); */
   }
   to {
     transform: translate(-50%, -50%) scale(1);
-    /* transform: translate(-50%, -50%); */
   }
 }
