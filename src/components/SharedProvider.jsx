@@ -8,9 +8,12 @@ import { SharedContext } from "./SharedContext";
 
 export function SharedProvider({ children }) {
   const [numberOfCartItems, setNumberOfCartItems] = useState(0);
+  const [cart, setCart] = useState({});
 
   return (
-    <SharedContext.Provider value={{ numberOfCartItems, setNumberOfCartItems }}>
+    <SharedContext.Provider
+      value={{ numberOfCartItems, setNumberOfCartItems, cart, setCart }}
+    >
       {children}
     </SharedContext.Provider>
   );

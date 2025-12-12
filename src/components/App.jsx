@@ -10,8 +10,8 @@ import { SharedContext } from "./SharedContext";
 function App() {
   const { productData, carouselProducts, setCarouselProducts, error, loading } =
     useProductData();
-  const [cart, setCart] = useState({});
-  const { numberOfCartItems, setNumberOfCartItems } = useContext(SharedContext);
+  const { numberOfCartItems, setNumberOfCartItems, cart, setCart } =
+    useContext(SharedContext);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [cartObjectToRemove, setCartObjectToRemove] = useState(null);
 
