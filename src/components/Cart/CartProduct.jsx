@@ -1,6 +1,7 @@
 import styles from "./CartProduct.module.css";
 import { useOutletContext } from "react-router";
 import { useEffect, useState } from "react";
+import trashIcon from "../../images/trash-can.svg";
 
 export default function CartProduct({ cartObject, productDataObject }) {
   const [
@@ -14,6 +15,8 @@ export default function CartProduct({ cartObject, productDataObject }) {
     ,
     setNumberOfCartItems,
     getNumberOfCartItems,
+    setShowDeleteConfirmation,
+    setCartObjectToRemove,
   ] = useOutletContext();
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
@@ -42,29 +45,27 @@ export default function CartProduct({ cartObject, productDataObject }) {
     setNumberOfCartItems(numberOfCartItems);
   }
 
-  function handleDecrementItem() {
-    const propertyName = "product" + cartObject.id;
-    const newCart = { ...cart };
-    if (cartObject.number > 1) {
-      newCart[propertyName] = {
-        ...cart[propertyName],
-        number: cart[propertyName].number - 1,
-      };
-    } else {
-      delete newCart[propertyName];
-    }
-    setCart(newCart);
-    const numberOfCartItems = getNumberOfCartItems(newCart);
-    setNumberOfCartItems(numberOfCartItems);
+  function handleRemoveItem() {
+    setShowDeleteConfirmation(true);
+    setCartObjectToRemove(cartObject);
   }
 
-  function handleRemoveItem() {
-    const propertyName = "product" + cartObject.id;
-    const newCart = { ...cart };
-    delete newCart[propertyName];
-    setCart(newCart);
-    const numberOfCartItems = getNumberOfCartItems(newCart);
-    setNumberOfCartItems(numberOfCartItems);
+  function handleDecrementItem() {
+    if (cartObject.number > 1) {
+      const propertyName = "product" + cartObject.id;
+      const newCart = {
+        ...cart,
+        [propertyName]: {
+          ...cart[propertyName],
+          number: cart[propertyName].number - 1,
+        },
+      };
+      setCart(newCart);
+      const numberOfCartItems = getNumberOfCartItems(newCart);
+      setNumberOfCartItems(numberOfCartItems);
+    } else {
+      handleRemoveItem();
+    }
   }
 
   return (
@@ -89,7 +90,13 @@ export default function CartProduct({ cartObject, productDataObject }) {
           </div>
           <div className={styles.itemInfoRight}>
             <button className={styles.decrease} onClick={handleDecrementItem}>
-              -
+              {cartObject.number === 1 ? (
+                <div className={styles.iconDiv}>
+                  <img src={trashIcon} alt="Delete icon." />
+                </div>
+              ) : (
+                "-"
+              )}
             </button>
             <span>{cartObject.number}</span>
             <button className={styles.increase} onClick={handleIncrementItem}>

@@ -110,6 +110,8 @@ export default function ProductCard({ productObject, handleShowPopup }) {
       <div className={styles.middleDiv}>
         <p className={styles.title}>{productObject.altText}</p>
         <p className={styles.price}>${productObject.price.toFixed(2)}</p>
+      </div>
+      <div className={styles.bottomDiv}>
         <div className={styles.itemSelectionDiv}>
           <button onClick={handleDecrementItem}>-</button>
           <input
@@ -123,10 +125,10 @@ export default function ProductCard({ productObject, handleShowPopup }) {
           />
           <button onClick={handleIncrementItem}>+</button>
         </div>
+        <button onClick={handleAddToCart} className={styles.addToCartButton}>
+          Add to cart
+        </button>
       </div>
-      <button onClick={handleAddToCart} className={styles.addToCartButton}>
-        Add to cart
-      </button>
     </div>
   );
 }

@@ -1,0 +1,61 @@
+.deleteConfirmationDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 25px;
+  font-size: 1.8rem;
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+  border: 2px solid black;
+  border-radius: 8px;
+  animation: come-in 200ms ease-out;
+}
+
+.deleteConfirmationDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.buttonDiv {
+  display: flex;
+  gap: 25px;
+}
+
+.yes,
+.no {
+  composes: defaultButton from "../DefaultButton.module.css";
+}
+
+.yes {
+  composes: primaryBg from "../DefaultButton.module.css";
+}
+
+.no {
+  background-color: rgb(242, 179, 179);
+}
+
+@media (hover: hover) {
+  .yes:hover,
+  .no:hover {
+    transform: scale(1.2);
+  }
+}
+
+.yes:active,
+.no:active {
+  transform: scale(0.9);
+}
+
+@keyframes come-in {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    /* transform: translate(-50%, -50%); */
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    /* transform: translate(-50%, -50%); */
+  }
+}

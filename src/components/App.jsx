@@ -3,6 +3,7 @@ import "./app-colors.css";
 import { useContext, useState } from "react";
 import useProductData from "./useProductData";
 import Nav from "./Nav/Nav";
+import DeleteConfirmation from "./DeleteConfirmation/DeleteConfirmation";
 import { Outlet } from "react-router";
 import { SharedContext } from "./SharedContext";
 
@@ -11,6 +12,8 @@ function App() {
     useProductData();
   const [cart, setCart] = useState({});
   const { numberOfCartItems, setNumberOfCartItems } = useContext(SharedContext);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [cartObjectToRemove, setCartObjectToRemove] = useState(null);
 
   function getNumberOfCartItems(cart) {
     const cartItemObjectsArray = Object.values(cart);
@@ -35,8 +38,21 @@ function App() {
           numberOfCartItems,
           setNumberOfCartItems,
           getNumberOfCartItems,
+          setShowDeleteConfirmation,
+          setCartObjectToRemove,
         ]}
       />
+      {showDeleteConfirmation && (
+        <DeleteConfirmation
+          cartObjectToRemove={cartObjectToRemove}
+          setCartObjectToRemove={setCartObjectToRemove}
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
+          cart={cart}
+          setCart={setCart}
+          setNumberOfCartItems={setNumberOfCartItems}
+          getNumberOfCartItems={getNumberOfCartItems}
+        />
+      )}
     </>
   );
 }
