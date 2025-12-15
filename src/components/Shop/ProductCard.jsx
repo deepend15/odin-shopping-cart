@@ -1,5 +1,4 @@
 import styles from "./ProductCard.module.css";
-import Popup from "./Popup";
 import { useOutletContext } from "react-router";
 import { useState, useEffect, useRef } from "react";
 
